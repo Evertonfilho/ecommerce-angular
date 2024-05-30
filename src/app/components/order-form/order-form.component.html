@@ -1,0 +1,52 @@
+<div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">E-commerce</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/products">Produtos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/clients">Clientes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" routerLink="/orders">Pedidos</a>
+              </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/orders/add">Realizar Pedido</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1 class="mb-4">Realizar Pedido</h1>
+        <form (ngSubmit)="addPedido()">
+          <div class="form-group mb-3">
+            <label for="cliente" class="form-label">Cliente</label>
+            <select class="form-control" id="cliente" [(ngModel)]="selectedCliente" name="cliente" required>
+              <option *ngFor="let cliente of clientes" [ngValue]="cliente">{{ cliente.nome }}</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="produto" class="form-label">Produto</label>
+            <select class="form-control" id="produto" [(ngModel)]="selectedProduto" name="produto" required>
+              <option *ngFor="let produto of produtos" [ngValue]="produto">{{ produto.nome }}</option>
+            </select>
+          </div>
+          <div class="form-group mb-3">
+            <label for="quantidade" class="form-label">Quantidade</label>
+            <input type="number" class="form-control" id="quantidade" [(ngModel)]="quantidade" name="quantidade" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Realizar Pedido</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

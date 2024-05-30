@@ -1,0 +1,54 @@
+<!-- src/app/components/order-list/order-list.component.html -->
+<div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">E-commerce</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/products">Produtos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/clients">Clientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/orders">Pedidos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/orders/add">Realizar Pedido</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  
+    <h1>Lista de Pedidos</h1>
+    <table class="table table-hover table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Produtos</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidos">
+          <td>{{ pedido.id }}</td>
+          <td>{{ pedido.cliente.nome }}</td>
+          <td>
+            <ul>
+              <li *ngFor="let produto of pedido.produtos">
+                {{ produto.produto.nome }} - {{ produto.quantidade }} unidades
+              </li>
+            </ul>
+          </td>
+          <td>{{ pedido.total | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
